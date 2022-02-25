@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRealStateCategoriesTable extends Migration
+class CreateCategoryRealStateTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateRealStateCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('real_state_categories', function (Blueprint $table) {
+        Schema::create('category_real_state', function (Blueprint $table) {
 
             $table->foreignId('real_state_id')->constrained()->onDelete('cascade');
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
@@ -29,6 +29,6 @@ class CreateRealStateCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('real_state_categories');
+        Schema::dropIfExists('category_real_state');
     }
 }

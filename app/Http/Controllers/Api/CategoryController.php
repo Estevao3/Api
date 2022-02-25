@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use App\Models\RealState;
+use http\Client\Response;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -125,6 +126,21 @@ class CategoryController extends Controller
                 'data' => [
                     'msg' => 'Categoria excluída com sucesso!'
                 ]
+            ], 200);
+
+        } catch (\Exception $e) {
+            $message = new ApiMessages($e->getMessage());
+            return response()->json($message->getMessage(), 401);
+        }
+    }
+
+    public function realState($id)
+    {
+        try {
+            $category = $this->category->findOrFail($id);
+
+            return response()->json([
+                'data' => $category->realStates
             ], 200);
 
         } catch (\Exception $e) {

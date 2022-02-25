@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class RealStatePhoto extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name', 'description', 'slug'
+        'photo', 'is_thumb'
     ];
 
-    public function realStates()
+    public function realState()
     {
-        return $this->belongsToMany(RealState::class, 'real_state_categories');
+        return $this->belongsTo(RealState::class);
     }
 }
